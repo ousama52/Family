@@ -272,6 +272,17 @@ Drives a real browser through the flows that matter: create a tree, grow a branc
 soft-remove, confirm nothing was deleted, reload to prove persistence, confirm a reloaded
 visitor is read-only, unlock with the passcode, restore, and hard-prune.
 
+Point it at the deployed URL to check a release the same way.
+
+```bash
+node scripts/verify-backend.mjs <url> <firebaseApiKey> <projectId>
+```
+
+Confirms a deployment is really talking to Firestore rather than silently falling back to
+browser-local storage — it creates a tree in the browser, then looks that exact tree id up
+through the Firestore REST API. Worth running after a deploy, because every other check
+passes either way.
+
 `node scripts/screenshot.mjs http://localhost:4173 screenshots` refreshes the images at
 the top of this file.
 
@@ -305,5 +316,6 @@ src/
 scripts/
   extract-assets.mjs    slices Things/ into src/assets/themes/
   smoke.mjs             end-to-end browser checks
+  verify-backend.mjs    proves a deployment is really writing to Firestore
   screenshot.mjs        regenerates the README images
 ```
