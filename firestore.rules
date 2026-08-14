@@ -1,0 +1,71 @@
+rules_version = '2';
+
+// Family Tree Maker — Firestore rules.
+//
+// Reads are open: anyone holding a tree's link can look at it.
+//
+// Write protection is a shared secret, not authentication. The passcode is
+// never stored or sent in plaintext — only a salted SHA-256 digest lives on the
+// tree document, and the client compares digests before it will issue a write
+// (see src/lib/passcode.ts and the guards in useTreeStore.ts).
+//
+// These rules therefore enforce the invariants that a passcode check cannot:
+// a tree must be created *with* a hash, that hash can never be rewritten (so a
+// tree cannot be taken over), and nothing can be written into a tree that does
+// not exist. Without Firebase Auth there is no server-side identity to check,
+// so a determined person who reads the tree could still write to it. If the
+// family wants real privacy, switch to Firebase Auth and gate on
+// `request.auth.uid` — the README has the details.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function treeExists(treeId) {
+      return exists(/databases/$(database)/documents/trees/$(treeId));
+    }
+
+    function isSha256(value) {
+      return value is string && value.size() == 64;
+    }
+
+    match /trees/{treeId} {
+      allow read: if true;
+
+      // A tree must be born locked: the hash is required at creation.
+      allow create: if isSha256(request.resource.data.passcodeHash)
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() <= 120;
+
+      // Renaming the tree or switching its shared theme is fine; rewriting the
+      // passcode hash — which would hand the tree to whoever did it — is not.
+      allow update: if request.resource.data.passcodeHash == resource.data.passcodeHash;
+
+      allow delete: if false;
+
+      match /people/{personId} {
+        allow read: if true;
+        allow write: if treeExists(treeId)
+                     && (request.method == 'delete' || (
+                          request.resource.data.name is string
+                          && request.resource.data.name.size() > 0
+                          && request.resource.data.name.size() <= 120
+                          // Portraits are inlined as data URLs; keep documents
+                          // well inside Firestore's 1 MB limit.
+                          && (!('photoUrl' in request.resource.data)
+                              || request.resource.data.photoUrl.size() <= 950000)
+                        ));
+      }
+
+      match /relationships/{relationshipId} {
+        allow read: if true;
+        allow write: if treeExists(treeId)
+                     && (request.method == 'delete' || (
+                          request.resource.data.type in ['parent', 'spouse', 'sibling']
+                          && request.resource.data.status in ['active', 'removed']
+                          && request.resource.data.fromPersonId is string
+                          && request.resource.data.toPersonId is string
+                        ));
+      }
+    }
+  }
+}

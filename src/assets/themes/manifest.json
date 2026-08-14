@@ -1,0 +1,290 @@
+{
+  "celestial/background": {
+    "file": "background.jpg",
+    "whole": true
+  },
+  "celestial/ring-blue": {
+    "file": "ring-blue.png",
+    "width": 512,
+    "height": 512,
+    "apertureRatio": 0.5
+  },
+  "celestial/ring-gold": {
+    "file": "ring-gold.png",
+    "width": 512,
+    "height": 512,
+    "apertureRatio": 0.4982
+  },
+  "celestial/ring-purple": {
+    "file": "ring-purple.png",
+    "width": 512,
+    "height": 512,
+    "apertureRatio": 0.506
+  },
+  "celestial/star-1": {
+    "file": "star-1.png",
+    "width": 26,
+    "height": 27
+  },
+  "celestial/star-2": {
+    "file": "star-2.png",
+    "width": 128,
+    "height": 127
+  },
+  "celestial/star-3": {
+    "file": "star-3.png",
+    "width": 24,
+    "height": 24
+  },
+  "celestial/star-4": {
+    "file": "star-4.png",
+    "width": 25,
+    "height": 24
+  },
+  "celestial/star-5": {
+    "file": "star-5.png",
+    "width": 24,
+    "height": 24
+  },
+  "celestial/star-6": {
+    "file": "star-6.png",
+    "width": 25,
+    "height": 39
+  },
+  "celestial/star-7": {
+    "file": "star-7.png",
+    "width": 22,
+    "height": 23
+  },
+  "celestial/star-8": {
+    "file": "star-8.png",
+    "width": 24,
+    "height": 23
+  },
+  "celestial/shard-1": {
+    "file": "shard-1.png",
+    "width": 192,
+    "height": 190
+  },
+  "celestial/shard-2": {
+    "file": "shard-2.png",
+    "width": 81,
+    "height": 192
+  },
+  "celestial/shard-3": {
+    "file": "shard-3.png",
+    "width": 169,
+    "height": 192
+  },
+  "celestial/shard-4": {
+    "file": "shard-4.png",
+    "width": 66,
+    "height": 192
+  },
+  "celestial/shard-5": {
+    "file": "shard-5.png",
+    "width": 165,
+    "height": 192
+  },
+  "celestial/shard-6": {
+    "file": "shard-6.png",
+    "width": 192,
+    "height": 123
+  },
+  "celestial/shard-7": {
+    "file": "shard-7.png",
+    "width": 125,
+    "height": 192
+  },
+  "celestial/shard-8": {
+    "file": "shard-8.png",
+    "width": 153,
+    "height": 192
+  },
+  "celestial/back": {
+    "file": "back.png",
+    "width": 192,
+    "height": 188
+  },
+  "celestial/menu": {
+    "file": "menu.png",
+    "width": 192,
+    "height": 189
+  },
+  "celestial/zoom-in": {
+    "file": "zoom-in.png",
+    "width": 192,
+    "height": 189
+  },
+  "celestial/zoom-out": {
+    "file": "zoom-out.png",
+    "width": 192,
+    "height": 189
+  },
+  "celestial/search": {
+    "file": "search.png",
+    "width": 192,
+    "height": 191
+  },
+  "celestial/share": {
+    "file": "share.png",
+    "width": 192,
+    "height": 191
+  },
+  "celestial/tree": {
+    "file": "tree.png",
+    "width": 192,
+    "height": 186
+  },
+  "celestial/people": {
+    "file": "people.png",
+    "width": 192,
+    "height": 188
+  },
+  "celestial/timeline": {
+    "file": "timeline.png",
+    "width": 192,
+    "height": 186
+  },
+  "celestial/memories": {
+    "file": "memories.png",
+    "width": 192,
+    "height": 185
+  },
+  "celestial/more": {
+    "file": "more.png",
+    "width": 192,
+    "height": 185
+  },
+  "medieval/background": {
+    "file": "background.jpg",
+    "whole": true
+  },
+  "medieval/border-frame": {
+    "file": "border-frame.png",
+    "whole": true
+  },
+  "medieval/frame-1": {
+    "file": "frame-1.png",
+    "width": 512,
+    "height": 512,
+    "apertureRatio": 0.534
+  },
+  "medieval/frame-2": {
+    "file": "frame-2.png",
+    "width": 512,
+    "height": 512,
+    "apertureRatio": 0.5146
+  },
+  "medieval/frame-3": {
+    "file": "frame-3.png",
+    "width": 512,
+    "height": 512,
+    "apertureRatio": 0.5239
+  },
+  "medieval/plaque": {
+    "file": "plaque.png",
+    "width": 640,
+    "height": 256
+  },
+  "medieval/leaf-1": {
+    "file": "leaf-1.png",
+    "width": 105,
+    "height": 128
+  },
+  "medieval/crack-overlay": {
+    "file": "crack-overlay.png",
+    "width": 512,
+    "height": 345
+  },
+  "medieval/back": {
+    "file": "back.png",
+    "width": 188,
+    "height": 192
+  },
+  "medieval/settings": {
+    "file": "settings.png",
+    "width": 188,
+    "height": 192
+  },
+  "medieval/tree": {
+    "file": "tree.png",
+    "width": 174,
+    "height": 192
+  },
+  "medieval/people": {
+    "file": "people.png",
+    "width": 169,
+    "height": 192
+  },
+  "medieval/timeline": {
+    "file": "timeline.png",
+    "width": 151,
+    "height": 192
+  },
+  "medieval/memories": {
+    "file": "memories.png",
+    "width": 177,
+    "height": 192
+  },
+  "medieval/more": {
+    "file": "more.png",
+    "width": 192,
+    "height": 179
+  },
+  "wuxia/background": {
+    "file": "background.jpg",
+    "whole": true
+  },
+  "wuxia/frame-1": {
+    "file": "frame-1.png",
+    "width": 512,
+    "height": 512,
+    "apertureRatio": 0.697
+  },
+  "wuxia/seal": {
+    "file": "seal.png",
+    "width": 256,
+    "height": 239
+  },
+  "wuxia/ink-slash": {
+    "file": "ink-slash.png",
+    "width": 427,
+    "height": 640
+  },
+  "wuxia/back": {
+    "file": "back.png",
+    "width": 185,
+    "height": 192
+  },
+  "wuxia/menu": {
+    "file": "menu.png",
+    "width": 192,
+    "height": 191
+  },
+  "wuxia/tree": {
+    "file": "tree.png",
+    "width": 188,
+    "height": 192
+  },
+  "wuxia/people": {
+    "file": "people.png",
+    "width": 187,
+    "height": 192
+  },
+  "wuxia/timeline": {
+    "file": "timeline.png",
+    "width": 192,
+    "height": 185
+  },
+  "wuxia/skills": {
+    "file": "skills.png",
+    "width": 181,
+    "height": 192
+  },
+  "wuxia/more": {
+    "file": "more.png",
+    "width": 182,
+    "height": 192
+  }
+}
