@@ -1,3 +1,4 @@
+import { byCreation } from './layout'
 import type { Person, Relationship } from '../types'
 
 /**
@@ -16,7 +17,9 @@ export function assignLineage(
 ): Record<string, number> {
   const parentsOf = new Map<string, string[]>()
   const spousesOf = new Map<string, string[]>()
-  for (const r of relationships) {
+  // Walking "the first parent" only gives a stable answer if the relationships
+  // are in a stable order — Firestore returns them ordered by document id.
+  for (const r of [...relationships].sort(byCreation)) {
     if (r.type === 'parent') {
       parentsOf.set(r.toPersonId, [...(parentsOf.get(r.toPersonId) ?? []), r.fromPersonId])
     } else if (r.type === 'spouse') {
