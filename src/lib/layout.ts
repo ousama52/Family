@@ -58,6 +58,11 @@ type Graph = {
   siblingsOf: Map<string, string[]>
 }
 
+/** Stable ordering for records that arrive from Firestore in id order. */
+export function byCreation<T extends { id: string; createdAt?: number }>(a: T, b: T) {
+  return (a.createdAt ?? 0) - (b.createdAt ?? 0) || a.id.localeCompare(b.id)
+}
+
 function push(map: Map<string, string[]>, key: string, value: string) {
   const list = map.get(key)
   if (list) {
@@ -338,9 +343,15 @@ export function computeLayout(
   const peopleById = new Map(people.map((p) => [p.id, p]))
   const known = new Set(peopleById.keys())
   // Ignore relationships pointing at people who no longer exist.
-  const rels = relationships.filter(
-    (r) => known.has(r.fromPersonId) && known.has(r.toPersonId) && r.fromPersonId !== r.toPersonId,
-  )
+  const rels = relationships
+    .filter(
+      (r) => known.has(r.fromPersonId) && known.has(r.toPersonId) && r.fromPersonId !== r.toPersonId,
+    )
+    // Firestore hands collections back ordered by document id, so the array
+    // arrives in a different order than it was written. Several decisions below
+    // read "the first parent", so sort into a stable order first — otherwise the
+    // same tree could lay itself out differently after a reload.
+    .sort(byCreation)
 
   const g = buildGraph(rels)
   const depth = computeDepths(people, rels)
